@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأثير الكتابة المتكرر</title>
+    <link rel="stylesheet" href="styles.css">
+    
+ <style>
+     
+     
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#typing-text {
+    font-size: 2rem;
+    color: #333;
+    border-right: 4px solid black; /* تأثير المؤشر */
+    padding-right: 5px;
+}
+     
+     
+ </style>   
+    
+</head>
+<body>
+    
+    
+    
+    <div class="container">
+        
+     <h2>Mohamed Hassan Mohamed</h2> 
+     <h3> Wats app +201062136400</h3>
+     <h4>
+         web site
+         html
+        css 
+        javascript
+     </h4>
+        
+        <p id="typing-text"></p>
+        
+        
+        
+        
+    </div>
+
+
+
+    <script>
+        
+const text = "haw ar you admin"
+
+
+let i = 0;
+const speed = 100; // سرعة الكتابة (بالملي ثانية)
+const typingTextElement = document.getElementById("typing-text");
+
+function typeWriter() {
+    if (i < text.length) {
+        typingTextElement.innerHTML += text.charAt(i); // إضافة حرف جديد
+        i++;
+        setTimeout(typeWriter, speed); // استدعاء الدالة بشكل متكرر بعد فترة زمنية معينة
+    } else {
+        setTimeout(deleteText, 1000); // بعد الانتهاء من الكتابة، الانتظار 1 ثانية ثم بدء الحذف
+    }
+}
+
+function deleteText() {
+    let textContent = typingTextElement.innerHTML;
+    if (textContent.length > 0) {
+        typingTextElement.innerHTML = textContent.slice(0, -1); // حذف آخر حرف
+        setTimeout(deleteText, speed); // استدعاء الحذف بشكل متكرر بعد فترة زمنية معينة
+    } else {
+        i = 0; // إعادة تعيين العد إلى 0
+        typeWriter(); // إعادة الكتابة
+    }
+}
+
+typeWriter(); // استدعاء الدالة لبدء التأثير
+        
+        
+    </script>
+</body>
+</html>
